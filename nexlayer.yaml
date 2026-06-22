@@ -1,0 +1,30 @@
+application:
+  name: label-studio
+  pods:
+  - name: app
+    image: heartexlabs/label-studio:latest
+    path: /
+    servicePorts:
+    - 8080
+    vars:
+      DJANGO_DB: default
+      POSTGRE_NAME: labelstudio
+      POSTGRE_USER: labelstudio
+      POSTGRE_PASSWORD: labelstudio
+      POSTGRE_HOST: postgres.pod
+    volumes:
+    - name: label-studio-data
+      mountPath: /label-studio/data
+      size: 10Gi
+  - name: postgres
+    image: postgres:16-alpine
+    servicePorts:
+    - 5432
+    vars:
+      POSTGRES_DB: labelstudio
+      POSTGRES_USER: labelstudio
+      POSTGRES_PASSWORD: labelstudio
+    volumes:
+    - name: labelstudio-db
+      mountPath: /var/lib/postgresql/data
+      size: 10Gi
