@@ -11,11 +11,7 @@ application:
       POSTGRE_NAME: labelstudio
       POSTGRE_USER: labelstudio
       POSTGRE_PASSWORD: labelstudio
-      POSTGRE_HOST: postgres.pod
-    volumes:
-    - name: label-studio-data
-      mountPath: /label-studio/data
-      size: 10Gi
+      POSTGRE_HOST: label-studio-postgres-service
   - name: postgres
     image: postgres:16-alpine
     servicePorts:
