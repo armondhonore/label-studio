@@ -10,7 +10,7 @@ application:
       DJANGO_DB: default
       POSTGRE_NAME: labelstudio
       POSTGRE_USER: labelstudio
-      POSTGRE_PASSWORD: labelstudio
+      POSTGRE_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRE_HOST: label-studio-postgres-service
   - name: postgres
     image: postgres:16-alpine
@@ -19,7 +19,7 @@ application:
     vars:
       POSTGRES_DB: labelstudio
       POSTGRES_USER: labelstudio
-      POSTGRES_PASSWORD: labelstudio
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
     - name: labelstudio-db
       mountPath: /var/lib/postgresql/data
