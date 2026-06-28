@@ -2,7 +2,7 @@ application:
   name: label-studio
   pods:
   - name: app
-    image: heartexlabs/label-studio:latest
+    image: mirror.gcr.io/heartexlabs/label-studio:latest
     path: /
     servicePorts:
     - 8080
@@ -13,7 +13,7 @@ application:
       POSTGRE_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRE_HOST: label-studio-postgres-service
   - name: postgres
-    image: postgres:16-alpine
+    image: mirror.gcr.io/library/postgres:16-alpine
     servicePorts:
     - 5432
     vars:
